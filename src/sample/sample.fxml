@@ -11,9 +11,9 @@
             <Insets left="30.0" right="30.0" top="10.0"/>
         </padding>
         <Label text="stanowisko"/>
-        <TextField fx:id="stanowisko" promptText="1"/>
+        <TextField fx:id="post" promptText="1"/>
         <Label text="scenariusz"/>
-        <TextField fx:id="scenariusz" promptText="1"/>
+        <TextField fx:id="port" promptText="1"/>
         <Label text="serwer"/>
         <TextField fx:id="serwer" promptText="console.mysocialseller.com"/>
     </VBox>
