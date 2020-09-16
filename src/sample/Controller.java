@@ -8,7 +8,9 @@ import javafx.scene.layout.Pane;
 
 import javax.sound.sampled.AudioSystem;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
     @FXML
@@ -58,7 +60,7 @@ public class Controller {
 
     public int getDeviceIndex(String name) {
         for(int i=0;i<AudioSystem.getMixerInfo().length;i++)
-            if(AudioSystem.getMixerInfo()[i].getName().equals(name))
+            if(AudioSystem.getMixerInfo()[i].getName().contains(name))
                 return i;
         return -1;
     }
