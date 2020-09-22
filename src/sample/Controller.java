@@ -1,34 +1,55 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import javax.sound.sampled.AudioSystem;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.ResourceBundle;
 
-public class Controller {
-    @FXML
-    private static Pane list;
+public class Controller implements Initializable {
+
     @FXML
     private TextField post;
     @FXML
-    private TextField serwer;
+    private TextField server;
     @FXML
     private TextField port;
+    @FXML
+    private VBox textInput;
 
-    private static ComboBox<String> inputDevices;
-    private static ComboBox<String> outputDevices;
+
+    @FXML
+    private ComboBox<String> inputDevices;
+    @FXML
+    private ComboBox<String> outputDevices;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(textInput != null)
+        {
+            if(inputDevices != null && outputDevices != null)
+            {
+                prepareList();
+                setComboBox();
+            }
+        }
+    }
 
     public void writeToFile(int inputDeviceIndex, int outputDeviceIndex) {
         String fpost = post.getText();
         String fport = port.getText();
-        String fserver = serwer.getText();
+        String fserver = server.getText();
 
         //default values
         if(fpost.equals(""))
@@ -70,31 +91,17 @@ public class Controller {
             devicesList.getItems().add(device);
     }
 
-    void prepareList(Parent root) {
-        //combobox
-        inputDevices = new ComboBox<>();
-        outputDevices = new ComboBox<>();
-
-        //adding devices to combobox
+    void prepareList() {
+        //adding devices to combobox list
         List<String> listOfInput = getInputDevices();
         List<String> listOfOutput = getOutputDevices();
         addToList(inputDevices,listOfInput);
         addToList(outputDevices,listOfOutput);
-
-        //adding combobox to pane
-        list = new Pane();
-        list.getChildren().add(inputDevices);
-        list.getChildren().add(outputDevices);
-        ((Pane) root).getChildren().add(list);
     }
 
     public void setComboBox() {
         inputDevices.setValue(inputDevices.getItems().get(0));
-        inputDevices.setLayoutX(20);
-        inputDevices.setLayoutY(40);
         outputDevices.setValue(outputDevices.getItems().get(0));
-        outputDevices.setLayoutX(20);
-        outputDevices.setLayoutY(inputDevices.getHeight() + 50);
     }
 
     private List<String> getInputDevices() {

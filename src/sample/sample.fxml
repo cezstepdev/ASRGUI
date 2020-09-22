@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane minHeight="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <VBox alignment="TOP_CENTER" layoutX="336.0" layoutY="24.0" spacing="10">
-        <padding>
-            <Insets left="30.0" right="30.0" top="10.0"/>
-        </padding>
-        <Label text="stanowisko"/>
-        <TextField fx:id="post" promptText="1"/>
-        <Label text="scenariusz"/>
-        <TextField fx:id="port" promptText="1"/>
-        <Label text="serwer"/>
-        <TextField fx:id="serwer" promptText="console.mysocialseller.com"/>
+<Pane minHeight="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <VBox fx:id="textInput" alignment="CENTER" spacing="10">
+        <SplitPane dividerPositions="0.5">
+            <Label text="stanowisko" />
+            <TextField fx:id="post" promptText="1" />
+        </SplitPane>
+        <SplitPane dividerPositions="0.5">
+           <Label text="scenariusz"/>
+           <TextField fx:id="port" promptText="1"/>
+        </SplitPane>
+        <SplitPane dividerPositions="0.5">
+            <Label text="serwer" />
+            <TextField fx:id="server" promptText="console.mysocialseller.com" />
+        </SplitPane>
+        <ComboBox fx:id="inputDevices" prefWidth="300" />
+        <ComboBox fx:id="outputDevices" prefWidth="300" />
+        <Button layoutX="406.0" layoutY="223.0" mnemonicParsing="false" onAction="#click" text="Create file" />
     </VBox>
-    <Pane fx:id="list"/>
-    <Button onAction="#click" layoutX="406.0" layoutY="223.0" mnemonicParsing="false" text="Create file"/>
 </Pane>

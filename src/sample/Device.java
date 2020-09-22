@@ -1,3 +1,4 @@
+/*
 import edu.cmu.sphinx.frontend.util.Microphone;
 
 import java.io.IOException;
@@ -35,3 +36,4 @@ class Device {
         return mic;
     }
 }
+*/
